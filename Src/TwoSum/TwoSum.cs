@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Net.NetworkInformation;
-using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace TwoSum
 {
@@ -56,20 +55,12 @@ namespace TwoSum
 
         internal static bool InputIsValid(int[] input)
         {
-            if (input.Length < 2 || input.Length > MAX_LENGTH)
+            if (input.Length >= 2 && input.Length <= MAX_LENGTH)
             {
-                return false;
+                return input.All(inputValue => inputValue >= MIN_INPUT && inputValue <= MAX_INPUT);
             }
 
-            foreach (var inputValue in input)
-            {
-                if (inputValue < MIN_INPUT || inputValue > MAX_INPUT)
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return false;
         }
     }
 }
