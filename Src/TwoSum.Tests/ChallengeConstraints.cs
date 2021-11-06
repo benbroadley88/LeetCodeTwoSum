@@ -82,7 +82,7 @@ namespace TwoSum.Tests
         {
             var arrayInput = new int[TwoSum.MAX_LENGTH];
 
-            Array.Fill(arrayInput, -TwoSum.MIN_INPUT);
+            Array.Fill(arrayInput, TwoSum.MIN_INPUT);
             Assert.IsTrue(TwoSum.InputIsValid(arrayInput));
 
             Array.Fill(arrayInput, -50);
@@ -109,7 +109,7 @@ namespace TwoSum.Tests
             try
             {
                 var input = new int[TwoSum.MAX_LENGTH];
-                Array.Fill(input, TwoSum.MAX_TARGET + 1);
+                Array.Fill(input, TwoSum.MIN_INPUT - 1);
                 var target = 0;
                 var result = TwoSum.Calculate(input, target);
             }
@@ -124,7 +124,7 @@ namespace TwoSum.Tests
         public void Constraint2_LowerLimit_Validate()
         {
             var input = new int[TwoSum.MAX_LENGTH];
-            Array.Fill(input, TwoSum.MIN_TARGET - 1);
+            Array.Fill(input, TwoSum.MIN_INPUT - 1);
 
             Assert.IsFalse(TwoSum.InputIsValid(input));
         }

@@ -1,0 +1,5 @@
+﻿{
+  "stryker-config": {
+    "additional-timeout": 10000
+  }
+}
