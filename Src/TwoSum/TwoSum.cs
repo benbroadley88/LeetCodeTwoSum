@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace TwoSum
 {
@@ -11,27 +10,41 @@ namespace TwoSum
 
         public static int[] Calculate(int[] input, int target)
         {
-            if (!ValidateInput(input))
+            if (!InputIsValid(input))
             {
                 throw new ArgumentException("The input parameter does not meet the conditions of the challenge");
             }
 
-            if (!ValidateTarget(target))
+            if (!TargetIsValid(target))
             {
                 throw new ArgumentException("The taget parameter does not meet the conditions of the challenge");
             }
 
-            var result = new int[2];
+            for (var i = 0; i < input.Length; i++)
+            {
+                for (var j = 0; j < input.Length; j++)
+                {
+                    if (i == j)
+                    {
+                        continue;
+                    }
 
-            return result;
+                    if (input[i] + input[j] == target)
+                    {
+                        return new int[] { i, j };
+                    }
+                }
+            }
+
+            throw new ArgumentException("The inputs contained no valid solution");
         }
 
-        private static bool ValidateTarget(int target)
+        private static bool TargetIsValid(int target)
         {
-            return target < -110 || target > 110;
+            return target >= -109 || target <= 109;
         }
 
-        private static bool ValidateInput(int[] input)
+        private static bool InputIsValid(int[] input)
         {
             if (input.Length < 2 || input.Length > 104)
             {
