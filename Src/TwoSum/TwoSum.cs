@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace TwoSum
 {
@@ -39,12 +40,12 @@ namespace TwoSum
             throw new ArgumentException("The inputs contained no valid solution");
         }
 
-        private static bool TargetIsValid(int target)
+        internal static bool TargetIsValid(int target)
         {
-            return target >= -109 || target <= 109;
+            return target >= -109 && target <= 109;
         }
 
-        private static bool InputIsValid(int[] input)
+        internal static bool InputIsValid(int[] input)
         {
             if (input.Length < 2 || input.Length > 104)
             {
