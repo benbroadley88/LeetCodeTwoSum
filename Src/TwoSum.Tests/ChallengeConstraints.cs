@@ -86,14 +86,14 @@ namespace TwoSum.Tests
 
         /// <summary>
         /// Constraint 2:
-        /// -109 <= nums[i] <= 109
+        /// -10^9 <= nums[i] <= 10^9
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint2_LowerLimit_Throws()
         {
             var input = new int[104];
-            Array.Fill(input, -110);
+            Array.Fill(input, TwoSum.MAX_TARGET + 1);
 
             var target = 0;
 
@@ -104,21 +104,21 @@ namespace TwoSum.Tests
         public void Constraint2_LowerLimit_Validate()
         {
             var input = new int[104];
-            Array.Fill(input, -110);
+            Array.Fill(input, TwoSum.MIN_TARGET - 1);
 
             Assert.IsFalse(TwoSum.InputIsValid(input));
         }
 
         /// <summary>
         /// Constraint 2:
-        /// -109 <= nums[i] <= 109
+        /// -10^9 <= nums[i] <= 10^9
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint2_UpperLimit_Throws()
         {
             var input = new int[104];
-            Array.Fill(input, 110);
+            Array.Fill(input, TwoSum.MAX_INPUT + 1);
 
             var target = 0;
 
@@ -129,7 +129,7 @@ namespace TwoSum.Tests
         public void Constraint2_UpperLimit_Validate_Throws()
         {
             var input = new int[104];
-            Array.Fill(input, 110);
+            Array.Fill(input, TwoSum.MAX_INPUT + 1);
 
             Assert.IsFalse(TwoSum.InputIsValid(input));
         }
@@ -137,23 +137,23 @@ namespace TwoSum.Tests
         [TestMethod]
         public void Constraint3_ValidCases()
         {
-            Assert.IsTrue(TwoSum.TargetIsValid(109));
+            Assert.IsTrue(TwoSum.TargetIsValid(TwoSum.MAX_INPUT));
             Assert.IsTrue(TwoSum.TargetIsValid(25));
             Assert.IsTrue(TwoSum.TargetIsValid(0));
             Assert.IsTrue(TwoSum.TargetIsValid(-25));
-            Assert.IsTrue(TwoSum.TargetIsValid(-109));
+            Assert.IsTrue(TwoSum.TargetIsValid(TwoSum.MIN_INPUT));
         }
 
         /// <summary>
         /// Constraint 3:
-        /// -109 <= target <= 109
+        /// -10^9 <= target <= 10^9
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint3_LowerLimit_Throws()
         {
             var input = new int[] { 0, 0 };
-            var target = -110;
+            var target = TwoSum.MIN_TARGET - 1;
 
             var result = TwoSum.Calculate(input, target);
         }
@@ -161,29 +161,29 @@ namespace TwoSum.Tests
         [TestMethod]
         public void Constraint3_LowerLimit_Validate()
         {
-            var target = -110;
+            var target = TwoSum.MIN_TARGET - 1;
 
             Assert.IsFalse(TwoSum.TargetIsValid(target));
         }
 
         /// <summary>
         /// Constraint 3:
-        /// -109 <= target <= 109
+        /// -10^9 <= target <= 10^9
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint3_UpperLimit_Throws()
         {
             var input = new int[] { 0, 0 };
-            var target = 110;
+            var target = TwoSum.MAX_TARGET + 1;
 
             var result = TwoSum.Calculate(input, target);
         }
 
-        [TestMethod] 
+        [TestMethod]
         public void Constraint3_UpperLimit_Validate()
         {
-            var target = 110;
+            var target = TwoSum.MAX_TARGET + 1;
             Assert.IsFalse(TwoSum.TargetIsValid(target));
         }
     }

@@ -5,6 +5,12 @@ namespace TwoSum
 {
     public class TwoSum
     {
+        internal static int MAX_INPUT = Convert.ToInt32(Math.Pow(10, 9));
+        internal static int MIN_INPUT = Convert.ToInt32(Math.Pow(-10, 9));
+
+        internal static int MAX_TARGET = Convert.ToInt32(Math.Pow(10, 9));
+        internal static int MIN_TARGET = Convert.ToInt32(Math.Pow(-10, 9));
+
         static void Main(string[] args)
         {
         }
@@ -42,7 +48,7 @@ namespace TwoSum
 
         internal static bool TargetIsValid(int target)
         {
-            return target >= -109 && target <= 109;
+            return target >= MIN_TARGET && target <= MAX_TARGET;
         }
 
         internal static bool InputIsValid(int[] input)
@@ -54,7 +60,7 @@ namespace TwoSum
 
             foreach (var inputValue in input)
             {
-                if (inputValue < -109 || inputValue > 109)
+                if (inputValue < MIN_INPUT || inputValue > MAX_INPUT)
                 {
                     return false;
                 }
