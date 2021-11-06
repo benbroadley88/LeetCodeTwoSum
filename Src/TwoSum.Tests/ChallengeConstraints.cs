@@ -10,9 +10,8 @@ namespace TwoSum.Tests
         public void Constraint1_ValidCases()
         {
             const int MIN_LENGTH = 2;
-            const int MAX_LENGTH = 104;
             var minLengthArray = new int[MIN_LENGTH];
-            var maxLengthArray = new int[MAX_LENGTH];
+            var maxLengthArray = new int[TwoSum.MAX_LENGTH];
 
             Assert.IsTrue(TwoSum.InputIsValid(minLengthArray));
             Assert.IsTrue(TwoSum.InputIsValid(maxLengthArray));
@@ -20,7 +19,7 @@ namespace TwoSum.Tests
 
         /// <summary>
         /// Constraint 1:
-        /// 2 <= nums.length <= 104
+        /// 2 <= nums.length <= 10^4
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
@@ -42,13 +41,13 @@ namespace TwoSum.Tests
 
         /// <summary>
         /// Constraint 1:
-        /// 2 <= nums.length <= 104
+        /// 2 <= nums.length <= 10^4
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint1_UpperLimit_Throws()
         {
-            var input = new int[105];
+            var input = new int[TwoSum.MAX_LENGTH + 1];
             var target = 0;
 
             var result = TwoSum.Calculate(input, target);
@@ -65,10 +64,9 @@ namespace TwoSum.Tests
         [TestMethod]
         public void Constraint2_ValidCases()
         {
-            const int MAX_LENGTH = 104;
-            var arrayInput = new int[MAX_LENGTH];
+            var arrayInput = new int[TwoSum.MAX_LENGTH];
 
-            Array.Fill(arrayInput, -109);
+            Array.Fill(arrayInput, -TwoSum.MIN_INPUT);
             Assert.IsTrue(TwoSum.InputIsValid(arrayInput));
 
             Array.Fill(arrayInput, -50);
@@ -80,7 +78,7 @@ namespace TwoSum.Tests
             Array.Fill(arrayInput, 50);
             Assert.IsTrue(TwoSum.InputIsValid(arrayInput));
 
-            Array.Fill(arrayInput, 109);
+            Array.Fill(arrayInput, TwoSum.MAX_INPUT);
             Assert.IsTrue(TwoSum.InputIsValid(arrayInput));
         }
 
@@ -92,7 +90,7 @@ namespace TwoSum.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint2_LowerLimit_Throws()
         {
-            var input = new int[104];
+            var input = new int[TwoSum.MAX_LENGTH];
             Array.Fill(input, TwoSum.MAX_TARGET + 1);
 
             var target = 0;
@@ -103,7 +101,7 @@ namespace TwoSum.Tests
         [TestMethod]
         public void Constraint2_LowerLimit_Validate()
         {
-            var input = new int[104];
+            var input = new int[TwoSum.MAX_LENGTH];
             Array.Fill(input, TwoSum.MIN_TARGET - 1);
 
             Assert.IsFalse(TwoSum.InputIsValid(input));
@@ -117,7 +115,7 @@ namespace TwoSum.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint2_UpperLimit_Throws()
         {
-            var input = new int[104];
+            var input = new int[TwoSum.MAX_LENGTH];
             Array.Fill(input, TwoSum.MAX_INPUT + 1);
 
             var target = 0;
@@ -128,7 +126,7 @@ namespace TwoSum.Tests
         [TestMethod]
         public void Constraint2_UpperLimit_Validate_Throws()
         {
-            var input = new int[104];
+            var input = new int[TwoSum.MAX_LENGTH];
             Array.Fill(input, TwoSum.MAX_INPUT + 1);
 
             Assert.IsFalse(TwoSum.InputIsValid(input));

@@ -27,9 +27,9 @@ Output: [0,1]
 
 **Constraints:**
 
-- `2 <= nums.length <= 104`
-- `-10<sup>9</sup> <= nums[i] <= 10<sup>9</sup>`
-- `-10<sup>9</sup> <= target <= 10<sup>9</sup>`
+- `2 <= nums.length <= 10^4`
+- `-10^9 <= nums[i] <= 10^9`
+- `-10^9 <= target <= 10^9`
 - `**Only one valid answer exists.**`
  
 

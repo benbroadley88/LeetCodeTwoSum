@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 
 namespace TwoSum
 {
     public class TwoSum
     {
+        internal static int MAX_LENGTH = Convert.ToInt32(Math.Pow(10, 4));
+
         internal static int MAX_INPUT = Convert.ToInt32(Math.Pow(10, 9));
         internal static int MIN_INPUT = Convert.ToInt32(Math.Pow(-10, 9));
 
@@ -53,7 +56,7 @@ namespace TwoSum
 
         internal static bool InputIsValid(int[] input)
         {
-            if (input.Length < 2 || input.Length > 104)
+            if (input.Length < 2 || input.Length > MAX_LENGTH)
             {
                 return false;
             }
