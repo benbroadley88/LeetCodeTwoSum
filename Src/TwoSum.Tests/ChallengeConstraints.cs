@@ -25,10 +25,18 @@ namespace TwoSum.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint1_LowerLimit_Throws()
         {
-            var input = new int[1] { 1 };
-            var target = 0;
+            try
+            {
+                var input = new int[1] { 1 };
+                var target = 0;
 
-            var result = TwoSum.Calculate(input, target);
+                var result = TwoSum.Calculate(input, target);
+            }
+            catch (ArgumentException e)
+            {
+                Assert.AreEqual(LocalizedResources.InvalidInputParameter, e.Message);
+                throw;
+            }
         }
 
         [TestMethod]
@@ -47,10 +55,18 @@ namespace TwoSum.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint1_UpperLimit_Throws()
         {
-            var input = new int[TwoSum.MAX_LENGTH + 1];
-            var target = 0;
+            try
+            {
+                var input = new int[TwoSum.MAX_LENGTH + 1];
+                var target = 0;
 
-            var result = TwoSum.Calculate(input, target);
+                var result = TwoSum.Calculate(input, target);
+            }
+            catch (ArgumentException e)
+            {
+                Assert.AreEqual(LocalizedResources.InvalidInputParameter, e.Message);
+                throw;
+            }
         }
 
         [TestMethod]
@@ -90,12 +106,18 @@ namespace TwoSum.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint2_LowerLimit_Throws()
         {
-            var input = new int[TwoSum.MAX_LENGTH];
-            Array.Fill(input, TwoSum.MAX_TARGET + 1);
-
-            var target = 0;
-
-            var result = TwoSum.Calculate(input, target);
+            try
+            {
+                var input = new int[TwoSum.MAX_LENGTH];
+                Array.Fill(input, TwoSum.MAX_TARGET + 1);
+                var target = 0;
+                var result = TwoSum.Calculate(input, target);
+            }
+            catch (ArgumentException e)
+            {
+                Assert.AreEqual(LocalizedResources.InvalidInputParameter, e.Message);
+                throw;
+            }
         }
 
         [TestMethod]
@@ -115,12 +137,18 @@ namespace TwoSum.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint2_UpperLimit_Throws()
         {
-            var input = new int[TwoSum.MAX_LENGTH];
-            Array.Fill(input, TwoSum.MAX_INPUT + 1);
-
-            var target = 0;
-
-            var result = TwoSum.Calculate(input, target);
+            try
+            {
+                var input = new int[TwoSum.MAX_LENGTH];
+                Array.Fill(input, TwoSum.MAX_INPUT + 1);
+                var target = 0;
+                var result = TwoSum.Calculate(input, target);
+            }
+            catch (ArgumentException e)
+            {
+                Assert.AreEqual(LocalizedResources.InvalidInputParameter, e.Message);
+                throw;
+            }
         }
 
         [TestMethod]
@@ -150,10 +178,18 @@ namespace TwoSum.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint3_LowerLimit_Throws()
         {
-            var input = new int[] { 0, 0 };
-            var target = TwoSum.MIN_TARGET - 1;
+            try
+            {
+                var input = new int[] { 0, 0 };
+                var target = TwoSum.MIN_TARGET - 1;
 
-            var result = TwoSum.Calculate(input, target);
+                var result = TwoSum.Calculate(input, target);
+            }
+            catch (ArgumentException e)
+            {
+                Assert.AreEqual(LocalizedResources.InvalidTargetParameter, e.Message);
+                throw;
+            }
         }
 
         [TestMethod]
@@ -172,10 +208,17 @@ namespace TwoSum.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void Constraint3_UpperLimit_Throws()
         {
-            var input = new int[] { 0, 0 };
-            var target = TwoSum.MAX_TARGET + 1;
-
-            var result = TwoSum.Calculate(input, target);
+            try
+            {
+                var input = new int[] { 0, 0 };
+                var target = TwoSum.MAX_TARGET + 1;
+                var result = TwoSum.Calculate(input, target);
+            }
+            catch (ArgumentException e)
+            {
+                Assert.AreEqual(LocalizedResources.InvalidTargetParameter, e.Message);
+                throw;
+            }
         }
 
         [TestMethod]
@@ -183,6 +226,24 @@ namespace TwoSum.Tests
         {
             var target = TwoSum.MAX_TARGET + 1;
             Assert.IsFalse(TwoSum.TargetIsValid(target));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ThrowsWhenNoSolutionFound()
+        {
+            try
+            {
+                var input = new int[] { 2, 3, 4 };
+                var target = 99;
+
+                int[] result = TwoSum.Calculate(input, target);
+            }
+            catch (ArgumentException e)
+            {
+                Assert.AreEqual(LocalizedResources.NoSolutionError, e.Message);
+                throw;
+            }
         }
     }
 }

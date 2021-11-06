@@ -22,12 +22,12 @@ namespace TwoSum
         {
             if (!InputIsValid(input))
             {
-                throw new ArgumentException("The input parameter does not meet the conditions of the challenge");
+                throw new ArgumentException(LocalizedResources.InvalidInputParameter);
             }
 
             if (!TargetIsValid(target))
             {
-                throw new ArgumentException("The taget parameter does not meet the conditions of the challenge");
+                throw new ArgumentException(LocalizedResources.InvalidTargetParameter);
             }
 
             for (var i = 0; i < input.Length; i++)
@@ -46,7 +46,7 @@ namespace TwoSum
                 }
             }
 
-            throw new ArgumentException("The inputs contained no valid solution");
+            throw new ArgumentException(LocalizedResources.NoSolutionError);
         }
 
         internal static bool TargetIsValid(int target)
