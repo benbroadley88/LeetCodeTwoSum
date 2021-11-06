@@ -6,12 +6,24 @@ namespace TwoSum.Tests
     [TestClass]
     public class ChallengeConstraints
     {
+        #region Constraint 1
+
         [TestMethod]
         public void Constraint1_ValidCases()
         {
             const int MIN_LENGTH = 2;
             var minLengthArray = new int[MIN_LENGTH];
+
+            for (var i = 0; i < minLengthArray.Length; i++)
+            {
+                minLengthArray[i] = new Random().Next(TwoSum.MIN_INPUT, TwoSum.MAX_INPUT);
+            }
+
             var maxLengthArray = new int[TwoSum.MAX_LENGTH];
+            for (var i = 0; i < maxLengthArray.Length; i++)
+            {
+                maxLengthArray[i] = new Random().Next(TwoSum.MIN_INPUT, TwoSum.MAX_INPUT);
+            }
 
             Assert.IsTrue(TwoSum.InputIsValid(minLengthArray));
             Assert.IsTrue(TwoSum.InputIsValid(maxLengthArray));
@@ -76,6 +88,10 @@ namespace TwoSum.Tests
 
             Assert.IsFalse(TwoSum.InputIsValid(input));
         }
+
+        #endregion
+
+        #region Constraint 2
 
         [TestMethod]
         public void Constraint2_ValidCases()
@@ -161,6 +177,36 @@ namespace TwoSum.Tests
         }
 
         [TestMethod]
+        public void Constraint2_UpperLimit_ValidateSingle()
+        {
+            // Fill the array with mid-range values
+            var input = new int[TwoSum.MAX_LENGTH];
+            Array.Fill(input, 0);
+
+            // Include just one, in a random position in the array that's out of the permitted range.
+            input[10] = TwoSum.MAX_INPUT + 1;
+
+            Assert.IsFalse(TwoSum.InputIsValid(input));
+        }
+
+        [TestMethod]
+        public void Constraint2_LowerLimit_ValidateSingle()
+        {
+            // Fill the array with mid-range values
+            var input = new int[TwoSum.MAX_LENGTH];
+            Array.Fill(input, 0);
+
+            // Include just one, in a random position in the array that's out of the permitted range.
+            input[10] = TwoSum.MIN_INPUT - 1;
+
+            Assert.IsFalse(TwoSum.InputIsValid(input));
+        }
+
+        #endregion
+
+        #region Constraint 3 
+
+        [TestMethod]
         public void Constraint3_ValidCases()
         {
             Assert.IsTrue(TwoSum.TargetIsValid(TwoSum.MAX_INPUT));
@@ -228,6 +274,10 @@ namespace TwoSum.Tests
             Assert.IsFalse(TwoSum.TargetIsValid(target));
         }
 
+        #endregion
+
+        #region Miscellaneous
+
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void ThrowsWhenNoSolutionFound()
@@ -245,5 +295,7 @@ namespace TwoSum.Tests
                 throw;
             }
         }
+
+        #endregion
     }
 }

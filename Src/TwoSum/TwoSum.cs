@@ -57,7 +57,7 @@ namespace TwoSum
         {
             if (input.Length >= 2 && input.Length <= MAX_LENGTH)
             {
-                return input.All(inputValue => inputValue >= MIN_INPUT && inputValue <= MAX_INPUT);
+                return !input.Any(inputValue => inputValue < MIN_INPUT || inputValue > MAX_INPUT);
             }
 
             return false;
