@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwoSum", "Src\TwoSum\TwoSum.csproj", "{02016419-C94A-4970-9A9F-DC1293D93BCC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwoSum.Tests", "Src\TwoSum.Tests\TwoSum.Tests.csproj", "{066EE922-922F-4451-9E44-4EB780F424F2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{02016419-C94A-4970-9A9F-DC1293D93BCC} = {02016419-C94A-4970-9A9F-DC1293D93BCC}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B906B942-C73D-441C-B02C-26E1D84602A9}"
 	ProjectSection(SolutionItems) = preProject
