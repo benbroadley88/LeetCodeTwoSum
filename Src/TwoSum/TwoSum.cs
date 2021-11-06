@@ -13,10 +13,6 @@ namespace TwoSum
         internal static int MAX_TARGET = Convert.ToInt32(Math.Pow(10, 9));
         internal static int MIN_TARGET = Convert.ToInt32(Math.Pow(-10, 9));
 
-        static void Main(string[] args)
-        {
-        }
-
         public static int[] Calculate(int[] input, int target)
         {
             if (!InputIsValid(input))

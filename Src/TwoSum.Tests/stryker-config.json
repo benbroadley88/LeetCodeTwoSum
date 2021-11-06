@@ -1,5 +1,8 @@
 ﻿{
   "stryker-config": {
-    "additional-timeout": 10000
+    "additional-timeout": 10000,
+    "mutate": [
+      "!Program.cs" 
+    ] 
   }
 }
