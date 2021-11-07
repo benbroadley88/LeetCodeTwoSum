@@ -8,5 +8,16 @@ namespace TwoSumII
 {
     public class TwoSumII
     {
+        #region Input Validation
+
+        internal static bool ValidateNumbers(int[] numbers)
+        {
+        }
+
+        internal static bool ValidateTarget(int target)
+        {
+        }
+
+        #endregion
     }
 }
