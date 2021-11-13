@@ -9,7 +9,7 @@ namespace TwoSumII
     public class TwoSumII
     {
         private const int NUMBERS_MIN_LENGTH = 2;
-        private static int NUMBERS_MAX_LENGTH = Convert.ToInt32(3* Math.Pow(10, 4));
+        private static int NUMBERS_MAX_LENGTH = Convert.ToInt32(3 * Math.Pow(10, 4));
 
         private const int NUMBERS_VALUE_LOWER_LIMIT = -1000;
         private const int NUMBERS_VALUE_UPPER_LIMIT = 1000;
@@ -40,7 +40,29 @@ namespace TwoSumII
 
         public int[] Calculate(int[] numbers, int target)
         {
+            if (!TwoSumII.ValidateNumbers(numbers))
+            {
+                throw new ArgumentException();
+            }
+
+            if (!TwoSumII.ValidateTarget(target))
+            {
+                throw new ArgumentException();
+            }
+
             var result = new int[2];
+
+            for (var i = 0; i < numbers.Length; i++)
+            {
+                for (var j = i + 1; j < numbers.Length; j++)
+                {
+                    if (numbers[i] + numbers[j] == target)
+                    {
+                        result[0] = i + 1;
+                        result[1] = j + 1;
+                    }
+                }
+            }
 
             return result;
         }

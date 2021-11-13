@@ -37,7 +37,7 @@ namespace TwoSumII.Tests
 
             Assert.AreEqual(2, result.Length);
             Assert.AreEqual(1, result[0]);
-            Assert.AreEqual(1, result[1]);
+            Assert.AreEqual(2, result[1]);
         }
 
         /// **Example 2:**
