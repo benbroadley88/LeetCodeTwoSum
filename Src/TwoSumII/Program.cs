@@ -8,11 +8,10 @@ namespace TwoSumII
     {
         public static int Main(string[] args)
         {
-            var rootCommand = new RootCommand
-            {
-                new Option<int[]>("--numbers", "The integer array of input numbers."),
-                new Option<int>("--target", "The target sum to find.")
-            };
+            var numbersOption = new Option<int[]>("--numbers", "The integer array of input numbers.") { IsRequired = true };
+            var targetOption = new Option<int>("--target", "The target sum to find.") { IsRequired = true };
+
+            var rootCommand = new RootCommand { numbersOption, targetOption };
 
             rootCommand.Description = "LeetCode TwoSum implementation";
 
@@ -20,7 +19,11 @@ namespace TwoSumII
             {
                 try
                 {
-                    // TODO: Add an implementation
+                    var twoSumProgram = new TwoSumII();
+                    var result = twoSumProgram.Calculate(numbers, target);
+
+                    Console.WriteLine($"The result is: [{result[0]}, {result[1]}]");
+
                     return 0;
                 }
                 catch (ArgumentException ex)
